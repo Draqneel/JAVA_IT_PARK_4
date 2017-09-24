@@ -22,20 +22,26 @@ public class Main {
             switch (command) {
                 case 1:
                     System.out.println("What element you wanna add in end?");
+                    if (count == 100) {
+                        System.out.println("Array is full. You'll swap last element");
+                    }
                     n = scanner.nextInt();
+
                     a[count] = n;
                     count++;
                     break;
 
                 case 2:
                     System.out.println("What element you wanna add in start?");
-                    n = scanner.nextInt();
-                    if (a[0] == 0) {
-                        a[0] = n;
-                        count++;
-                    } else {
-                        a[0] = n;
+                    if (count == 100) {
+                        System.out.println("Array is full. You'll swap 1st element");
                     }
+                    n = scanner.nextInt();
+                    for (int i = count; i > 0; i--) {
+                        a[i] = a[i - 1];
+                    }
+                    a[0] = n;
+                    count++;
                     break;
 
                 case 3:
@@ -51,7 +57,7 @@ public class Main {
 
                         }
                         a[count - 1] = 0;
-                        count = count - 1;
+                        count = count--;
                     }
                     break;
                 case 4:
