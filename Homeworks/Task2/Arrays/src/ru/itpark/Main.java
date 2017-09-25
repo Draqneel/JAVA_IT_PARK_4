@@ -47,6 +47,14 @@ public class Main {
                 case 3:
                     System.out.println("What number of element that you wanna delete?");
                     n = scanner.nextInt();
+                    if (count == 0) {
+                        System.out.println("You can't delete elements because count = null");
+                        break;
+                    }
+                    if (n > 100 || n < 1 || a[n] == 0) {
+                        System.out.println("Range is uncorrect or you choose 'null' element");
+                        break;
+                    }
                     if (n == count) {
                         a[count - 1] = 0;
                         count = count - 1;
