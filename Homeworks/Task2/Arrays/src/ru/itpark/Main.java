@@ -65,7 +65,7 @@ public class Main {
 
                         }
                         a[count - 1] = 0;
-                        count = count--;
+                        count = count - 1;
                     }
                     break;
                 case 4:
