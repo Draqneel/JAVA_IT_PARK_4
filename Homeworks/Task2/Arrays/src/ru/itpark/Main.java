@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 
+
     public static void main(String[] args) {
         // write your code here
         System.out.println("Welcome to repository on your desktop!");
@@ -11,7 +12,9 @@ public class Main {
         System.out.println("2) Add in start");
         System.out.println("3) Delete elements");
         System.out.println("4) Wiew repository");
+        System.out.println("5) Sort your repository");
         int a[] = new int[100];
+        int array[];
         int count = 0;
         Scanner scanner = new Scanner(System.in);
 
@@ -37,10 +40,8 @@ public class Main {
                         System.out.println("Array is full. You'll swap 1st element");
                     }
                     n = scanner.nextInt();
-                    for (int i = count; i > 0; i--) {
-                        a[i] = a[i - 1];
-                    }
-                    a[0] = n;
+                    array = addINStart(n, a, count);
+                    a = array;
                     count++;
                     break;
 
@@ -55,18 +56,9 @@ public class Main {
                         System.out.println("Range is uncorrect or you choose 'null' element");
                         break;
                     }
-                    if (n == count) {
-                        a[count - 1] = 0;
-                        count = count - 1;
-                    } else {
-                        n = n - 1;
-                        for (int i = n; i < count - 1; i++) {
-                            a[i] = a[i + 1];
-
-                        }
-                        a[count - 1] = 0;
-                        count = count - 1;
-                    }
+                    array = deleteElemens(n, a, count);
+                    a = array;
+                    count = --count;
                     break;
                 case 4:
                     for (int i = 0; i < a.length; i++) {
@@ -76,6 +68,11 @@ public class Main {
                         }
                     }
                     break;
+                case 5:
+                    array = sort(a, count);
+                    a = array;
+                    System.out.println("Sorting coplete!");
+                    break;
                 default:
                     System.out.println("Command is uncorrect");
                     break;
@@ -83,7 +80,55 @@ public class Main {
         }
     }
 
+    public static int[] addINStart(int k, int[] h, int countFunc) {
+        for (int i = countFunc; i > 0; i--) {
+            h[i] = h[i - 1];
+        }
+        h[0] = k;
+        return h;
+
+    }
+
+    public static int[] deleteElemens(int k, int[] h, int countFunc) {
+        if (k == countFunc) {
+            h[countFunc - 1] = 0;
+        } else {
+            k = k - 1;
+            for (int i = k; i < countFunc - 1; i++) {
+                h[i] = h[i + 1];
+
+            }
+            h[countFunc - 1] = 0;
+
+        }
+
+        return h;
+    }
+
+    public static int[] sort(int[] h, int countFunc) {
+        for (int i = 0; i < countFunc; i++) {
+            int min = h[i];
+            int imin = i;
+
+            for (int j = i + 1; j < countFunc; j++) {
+                if (h[j] < min) {
+                    imin = j;
+                }
+            }
+
+            if (i != imin) {
+                int temp = h[i];
+                h[i] = h[imin];
+                h[imin] = temp;
+            }
+
+
+        }
+        return h;
+    }
+
 
 }
+
 
 
