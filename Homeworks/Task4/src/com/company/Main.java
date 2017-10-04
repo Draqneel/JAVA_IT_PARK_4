@@ -21,6 +21,7 @@ public class Main {
             System.out.println("2. Показать все списки");
             System.out.println("3. Работа со списком");
             int command = scanner.nextInt();
+            int commandSwitchTwo;
             int listNumber;
             int elementMenu;
             int indexMenu;
@@ -67,8 +68,9 @@ public class Main {
                         System.out.println("8) Удалить элемент по индексу");
                         System.out.println("9) Вернуть интекс элемента");
                         System.out.println();
+                        commandSwitchTwo = scanner.nextInt();
                         // работаем с меню 2.1
-                        switch (listNumber) {
+                        switch (commandSwitchTwo) {
                             case 1:
                                 System.out.println("Введите элемент который хотите добавить в конец");
                                 elementMenu = scanner.nextInt();
