@@ -42,7 +42,7 @@ public class ArrayList {
     public void addToBegin(int element) {
         if (count < elements.length) {
             for (int i = count; i > 0; i--) {
-                elements[i - 1] = elements[i];
+                 elements[i] = elements[i - 1];
             }
             elements[0] = element;
             count++;
@@ -60,12 +60,12 @@ public class ArrayList {
      * @param index   индекс, куда надо вставить
      */
     public void insert(int element, int index) {
-        if (index >= 0 && index < count) {
-            if (index == count - 1) {
-                elements[count - 1] = element;
+        if (index >= 0 && index <= count) {
+            if (index == count ) {
+                elements[count] = element;
             } else {
                 for (int i = count; i > index; i--) {
-                    elements[count] = elements[count - 1];
+                    elements[i] = elements[i - 1];
                 }
                 elements[index] = element;
             }

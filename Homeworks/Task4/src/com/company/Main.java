@@ -40,6 +40,7 @@ public class Main {
                 case 2:
                     for (int i = 0; i < lists.length; i++) {
                         if (a[i] == true) {
+                            System.out.println("Список номер " + i);
                             for (int j = 0; j < 100; j++) {
                                 System.out.print(lists[i].getElements(j) + " ");
                                 if (j % 10 == 9) {
@@ -47,12 +48,13 @@ public class Main {
                                 }
 
                             }
+                            System.out.println();
                         }
-                        System.out.println();
+
                     }
                     break;
                 case 3:
-                    System.out.println("Выберите лист с которым хотите работать [0..4]");
+                    System.out.println("Выберите спиоск с которым хотите работать [0..4]");
                     listNumber = scanner.nextInt();
                     if (listNumber > 4 || listNumber < 0) {
                         break;
@@ -94,7 +96,7 @@ public class Main {
                                 if (lists[listNumber].get(indexMenu) == -1) {
                                     System.out.println("Элемент отсутствует");
                                 } else {
-                                    System.out.println(lists[listNumber].get(indexMenu));
+                                    System.out.println(lists[listNumber].get(indexMenu)+" искомый элемент");
                                 }
                                 break;
                             case 5:
@@ -121,7 +123,7 @@ public class Main {
                                 if (lists[listNumber].find(elementMenu) == -1) {
                                     System.out.println("Такого элемента нет");
                                 } else {
-                                    System.out.println(lists[listNumber].find(elementMenu));
+                                    System.out.println(lists[listNumber].find(elementMenu)+" искомый индекс");
                                 }
                                 break;
                             default:
