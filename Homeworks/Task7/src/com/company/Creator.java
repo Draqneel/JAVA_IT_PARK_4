@@ -7,12 +7,17 @@ public class Creator {
     private static final int MAX_ENGLISH_CAPITAL_LETTER_NUMBER = 90;
     private static final int MIN_ENGLISH_LOWERCASE_LETTER_NUMBER = 97;
     private static final int MAX_ENGLISH_LOWERCASE_LETTER_NUMBER = 122;
-    private char A;
+    private static final int CREATE_DIGIT = 48;
+    private int back =0;
     private int aCode;
+    private int multiplier = 1;
+    private int[] parser = new int[100];
 
+    public void setACode(int aCode) {
+        this.aCode = aCode;
+    }
 
     boolean isDigit(char c) {
-        this.aCode = (int) c;
         if (aCode >= MIN_DIGIT_NUMBER && aCode <= MAX_DIGIT_NUMBER) {
             return true;
         } else {
@@ -44,6 +49,24 @@ public class Creator {
             return false;
         }
 
+    }
+
+    int parse(char number[],int count){
+
+        for (int i=count-1; i>-1 ;i--){
+            setACode(number[i]);
+            if (aCode>=MIN_DIGIT_NUMBER && aCode<=MAX_DIGIT_NUMBER){
+                aCode = aCode - CREATE_DIGIT;
+            }
+            aCode = aCode * multiplier;
+            multiplier *= 10;
+            parser[i] = aCode;
+        }
+        for (int i=0; i<count ;i++){
+            back += parser[i];
+        }
+        multiplier = 1;
+        return back;
     }
 
 
