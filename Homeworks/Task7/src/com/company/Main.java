@@ -11,10 +11,11 @@ public class Main {
         char[] glue = new char[100];
         String string;
         char ch;
-        System.out.println("1) Проверка символа");
-        System.out.println("2) Склеивание строки");
-        int command = scanner.nextInt();
+
         while (true) {
+            System.out.println("1) Проверка символа");
+            System.out.println("2) Склеивание строки");
+            int command = scanner.nextInt();
             switch (command) {
                 case 1:
                     System.out.println("Введите символ");
@@ -26,9 +27,9 @@ public class Main {
                     if (results[0] == true) {
                         System.out.print("цифра.");
                     } else if (results[1] == true && results[2] == true) {
-                        System.out.print("заглавная буква.");
+                        System.out.println("заглавная буква.");
                     } else if (results[1] == true && results[3] == true) {
-                        System.out.print("строчная буква.");
+                        System.out.println("строчная буква.");
                     }
                     break;
                 case 2:
