@@ -4,13 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        ArrayList<LinkedList<Human>> ages[] = new ArrayList[100];
+        ArrayList<LinkedList<Human>> lists[] = new ArrayList[100];
 
         BufferedReader reader = null;
         try {
@@ -22,7 +21,7 @@ public class Main {
 //        int age = 0;
 //        int scraper;
 //        char symbol;
-//        int multiplicator = 1;
+//        int multiplicator = 1;`
 
         try {
             while ((line = reader.readLine()) != null) {

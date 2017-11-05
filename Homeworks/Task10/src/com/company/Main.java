@@ -3,19 +3,19 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        LinkedList linkedList = new LinkedList();
-        linkedList.add("First");
-        linkedList.add("Second");
-        linkedList.add("Third");
-        linkedList.add("Fourth");
-        linkedList.add("Fifth");
-        linkedList.addToBegin("Zeroth");
+        ArrayList arrayList = new ArrayList();
+        arrayList.add("First");
+        arrayList.add("Second");
+        arrayList.add("Third");
+        arrayList.add("Fourth");
+        arrayList.add("Fifth");
+        arrayList.addToBegin("Zeroth");
 
 //        for (int i = 0; i < linkedList.size(); i++) {
 //            System.out.println(linkedList.get(i));
 //        }
 
-        Iterator iterator = linkedList.iterator();
+        Iterator iterator = arrayList.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }

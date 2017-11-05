@@ -1,6 +1,7 @@
 package com.company;
 
-public interface Iterator {
+public interface Iterator{
     Object next();
     boolean hasNext();
+
 }

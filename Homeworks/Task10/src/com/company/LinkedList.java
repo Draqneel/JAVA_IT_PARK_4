@@ -1,6 +1,5 @@
 package com.company;
 
-import java.util.Iterator;
 
 public class LinkedList implements List {
     // указатель на начало списка
@@ -87,13 +86,16 @@ public class LinkedList implements List {
         return 0;
     }
 
+
     @Override
     public int size() {
+
         return count;
     }
 
     @Override
     public Iterator iterator() {
+
         return new LinkedListIretaror();
     }
 
