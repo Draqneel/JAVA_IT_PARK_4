@@ -1,11 +1,8 @@
 package com.company;
 
-import java.util.Iterator;
-
-public class LinkedList<T> implements Iterable<T> {
-
-    private Node<T> head;
-    private Node<T> tail;
+public class LinkedList<T> implements List<T>{
+    private Node head;
+    private Node tail;
     private int count;
 
     public LinkedList() {
@@ -14,8 +11,9 @@ public class LinkedList<T> implements Iterable<T> {
         this.count = 0;
     }
 
+    @Override
     public void add(T element) {
-        Node<T> newNode = new Node<>(element);
+        Node newNode = new Node(element);
         if (tail == null) {
             head = newNode;
         } else {
@@ -25,55 +23,93 @@ public class LinkedList<T> implements Iterable<T> {
         count++;
     }
 
+    @Override
     public void addToBegin(T object) {
-        Node<T> newNode = new Node<>(object);
+        Node newNode = new Node(object);
+
         if (head == null) {
             tail = newNode;
         }
-
-        // для нового узла следующий элемент -
-        // тот, который был первым в списке
         newNode.next = head;
-        // теперь первый элемент списка - новый
         head = newNode;
         count++;
     }
 
-    private static class Node<E> {
-        // значение, которое хранит узел
-        E value;
-        // указатель на следующий узел
-        Node<E> next;
+    @Override
+    public T get(int index) {
+        if (index < 0 && index >= count) {
+            throw new IllegalArgumentException();
+        }
+        Node currentNode = head;
+        for (int i = 0; i < index; i++) {
+            currentNode = currentNode.next;
+        }
+        return (T)currentNode.value;
+    }
 
-        Node(E value) {
-            this.value = value;
+    @Override
+    public void remove(T object) {
+        if (head.value.equals(object)) {
+            head = head.next;
+            count--;
+        } else {
+            Node currentNode = head;
+            while (currentNode.next != null && !currentNode.next.value.equals(object)) {
+                currentNode = currentNode.next;
+            }
+            if (currentNode.next.value.equals(object)) {
+                currentNode.next = currentNode.next.next;
+                count--;
+            }
         }
     }
 
-    private class LinkedListIterator implements Iterator<T>{
+    @Override
+    public int indexOf(T object) {
+        Node currentNode = head;
+        for (int i = 0; i < count; i++) {
+            if (currentNode.value.equals(object)) {
+                return i;
+            }
+            currentNode = currentNode.next;
+        }
+        return -1;
+    }
 
-        private Node<T> currentNode = head;
+    @Override
+    public int size() {
+        return count;
+    }
+
+    @Override
+    public Iterator iterator() {
+        return new LinkedListIterator();
+    }
+
+
+    private class LinkedListIterator implements Iterator {
+
+        private Node currentNode = head;
+
+        @Override
+        public T next() {
+            T element = (T) currentNode.value;
+            currentNode = currentNode.next;
+            return element;
+        }
 
         @Override
         public boolean hasNext() {
             return currentNode != null;
         }
+    }
 
-        @Override
-        public T next() {
-            T value = currentNode.value;
-            currentNode = currentNode.next;
-            return value;
+    private static class Node<T> {
+        T value;
+        Node next;
+
+        Node(T value) {
+            this.value = value;
         }
-
     }
-    @Override
-    public Iterator<T> iterator() {
-        return new LinkedListIterator();
-    }
-
-    public int size() {
-        return count;
-    }
-
 }

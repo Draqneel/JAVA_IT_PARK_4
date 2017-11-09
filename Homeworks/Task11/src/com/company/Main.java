@@ -1,45 +1,49 @@
 package com.company;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 
 public class Main {
 
     public static void main(String[] args) {
+            DataReader dataReader = new DataReader("C:\\Users\\Draqneel\\Desktop\\JAVA_IT_PARK_4\\Homeworks\\Task11\\src\\com\\company\\file.txt");
 
-        ArrayList<LinkedList<Human>> lists[] = new ArrayList[100];
+            ArrayList<LinkedList<Human>> lists = new ArrayList<>();
 
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader("C:\\Users\\Draqneel\\Desktop\\JAVA_IT_PARK_4\\Homeworks\\Task11\\src\\com\\company\\file.txt"));
-        } catch (FileNotFoundException e) {
-            throw new IllegalArgumentException();
-        }
-        String line;
-//        int age = 0;
-//        int scraper;
-//        char symbol;
-//        int multiplicator = 1;`
-
-        try {
-            while ((line = reader.readLine()) != null) {
-//                scraper = line.length() - 1;
-//                while (line.charAt(scraper) != 32){
-//                    symbol = line.charAt(scraper);
-//                    age +=((int)symbol - 48)*multiplicator;
-//                    multiplicator = multiplicator * 10;
-//                    scraper--;
-//                }
-//                ages[age]++;
-//                age = 0;
-//                multiplicator = 1;
+            for (int i = 0; i < 100; i++) {
+                lists.add(new LinkedList<Human>());
             }
-        } catch (IOException e) {
-            throw new IllegalArgumentException();
+
+            String currentName = dataReader.readString();
+            int currentAge = dataReader.readInteger();
+            while (!currentName.equals("")) {
+                lists.get(currentAge).add(new Human(currentAge, currentName));
+                currentName = dataReader.readString();
+                currentAge = dataReader.readInteger();
+            }
+
+
+            for (int i = 0; i < 100; i++) {
+                if (lists.get(i).size() != 0) {
+                    Iterator iterator = lists.get(i).iterator();
+                    while (iterator.hasNext()) {
+                        System.out.print(iterator.next());
+                    }
+                    System.out.println();
+                }
+            }
+
+
+
+
+
         }
-
-
-    }
 }
+
+
+/*
+1)Написать алгоритм добавления имён людям (++)
+2)Протестить алгоритм на выводе массива людей (++)
+3)Написать ArrayList (++)
+4)Связать ArrayList с LinkedList (++)
+5)Разобраться с итераторами ()
+6)Продакшн, друзья! ()
+ */
