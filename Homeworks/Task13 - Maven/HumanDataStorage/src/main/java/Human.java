@@ -32,4 +32,5 @@ public class Human {
                 .add("citizen", citizen)
                 .toString();
     }
+
 }

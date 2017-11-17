@@ -13,4 +13,6 @@ public class HumanRowMapper implements RowMapper<Human> {
                 resultSet.getString("citizen")
         );
     }
+
+
 }
