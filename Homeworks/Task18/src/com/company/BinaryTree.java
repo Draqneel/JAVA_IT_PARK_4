@@ -1,6 +1,6 @@
 package com.company;
 
-public class BinaryTree implements Branchy {
+public class BinaryTree  {
     public Node root ;
     public Node currentNode;
     public Node temp;
@@ -37,14 +37,17 @@ public class BinaryTree implements Branchy {
             return value;
         }
     }
-    @Override
+
     public void add(int element) {
       if (root == null) {
           Node first = new Node(element);
           root = first;
 
       } else {
-          currentNode = root;
+      }
+    }
+
+     public void addHelper(int element) {          currentNode = root;
 //          if (currentNode.value < element && currentNode.leftDescendent == null) {
 //              Node newNode = new Node(element);
 //              newNode.lastDescendent = currentNode;
@@ -56,12 +59,9 @@ public class BinaryTree implements Branchy {
 //              newNode.lastDescendent = currentNode;
 //              return;
 //          }
-          addHelper(element);
-      }
-    }
+         addHelper(element);
 
-     public void addHelper(int element) {
-        if (currentNode.value < element) {
+         if (currentNode.value < element) {
             if(currentNode.leftDescendent != null) {
                 temp = currentNode;
                 currentNode = currentNode.leftDescendent;
@@ -92,19 +92,23 @@ public class BinaryTree implements Branchy {
         }
     }
 
-    @Override
-    public void postfix() {
-       if (currentNode == null) {
+
+    public void preOrderTravel(Node root) {
+       if (root != null) {
+           System.out.println(root.value);
+           preOrderTravel(root.leftDescendent);
+           preOrderTravel(root.rightDescendent);
+       } else {
            return;
        }
     }
 
-    @Override
+
     public void prefix() {
 
     }
 
-    @Override
+
     public void infix() {
 
     }
